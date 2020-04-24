@@ -3,13 +3,13 @@ import { LocationContext } from "../location/LocationProvider"
 import { EmployeeContext } from "./EmployeeProvider"
 
 export default props => {
-    const { employees, addEmployee } = useContext(EmployeeContext)
+    const { addEmployee } = useContext(EmployeeContext)
     const { locations } = useContext(LocationContext)
 
     const name = useRef()
     const location = useRef()
-    // const manager = useRef()
-    // const fullTime = useRef()
+    const manager = useRef()
+    const fullTime = useRef()
     // const hourlyRate = useRef()
 
     const constructNewEmployee = () => {
@@ -17,8 +17,8 @@ export default props => {
         const newEmployeeObject = {
             name: name.current.value,
             locationId: parseInt(location.current.value),
-            // manager: (manager.current.value === "yes" ? true : false),
-            // fullTime: (fullTime.current.value === "yes" ? true : false),
+            manager: (manager.current.value === "1" ? true : false),
+            fullTime: (fullTime.current.value === "0" ? true : false),
             // hourlyRate: hourlyRate.current.value
         }
         console.log(newEmployeeObject)
@@ -27,6 +27,7 @@ export default props => {
 
     return (
         <form className="employeeForm">
+
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="employeeName">Name of Employee: </label>
@@ -41,6 +42,7 @@ export default props => {
                     />
                 </div>
             </fieldset>
+
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="location">Assign to location: </label>
@@ -60,6 +62,41 @@ export default props => {
                     </select>
                 </div>
             </fieldset>
+
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="manager">Is this employee a manager?</label>
+                    <select
+                        defaultValue=""
+                        name="manager"
+                        ref={manager}
+                        id="manager"
+                        className="form-control"
+                    >
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+    
+                    </select>                 
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="fullTime">Is this a full-time employee?</label>
+                    <select
+                        defaultValue=""
+                        name="fullTime"
+                        ref={fullTime}
+                        id="fullTime"
+                        className="form-control"
+                    >
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+    
+                    </select>                 
+                </div>
+            </fieldset>
+
             <button type="submit"
                 onClick={
                     evt => {

@@ -12,7 +12,7 @@ import { EmployeeProvider } from "./employee/EmployeeProvider"
 
 
 export default () => {
-    const [modal, setModal] = useState(false)
+    const [modal, setModal] = useState(true)
     const toggle = () => setModal(!modal)
 
     return (
