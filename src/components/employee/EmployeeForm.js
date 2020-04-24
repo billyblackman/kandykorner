@@ -1,9 +1,9 @@
 import React, { useContext, useRef } from "react"
-import { EmployeeContext } from "./EmployeeProvider"
 import { LocationContext } from "../location/LocationProvider"
+import { EmployeeContext } from "./EmployeeProvider"
 
 export default props => {
-    // const { employees } = useContext(EmployeeContext)
+    const { employees, addEmployee } = useContext(EmployeeContext)
     const { locations } = useContext(LocationContext)
 
     const name = useRef()
@@ -22,7 +22,7 @@ export default props => {
             // hourlyRate: hourlyRate.current.value
         }
         console.log(newEmployeeObject)
-        addEmployee(newEmployeeObject)
+        addEmployee(newEmployeeObject).then(props.toggle)
     }
 
     return (
@@ -64,7 +64,7 @@ export default props => {
                 onClick={
                     evt => {
                         evt.preventDefault() // Prevent browser from submitting the form
-                        // create the animal function goes here
+                        // create employee function goes here
                         constructNewEmployee()
                     }
                 }

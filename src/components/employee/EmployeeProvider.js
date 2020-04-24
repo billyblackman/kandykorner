@@ -43,9 +43,12 @@ export const EmployeeContext = React.createContext()
         }, [employees])
 
         return (
-            <EmployeeContext.Provider value={{
-                employees, addEmployee
-            }}>
+            <EmployeeContext.Provider value={
+                {
+                employees,
+                addEmployee
+                }
+            }>
                 {props.children}
             </EmployeeContext.Provider>
         )
