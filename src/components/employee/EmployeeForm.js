@@ -10,7 +10,7 @@ export default props => {
     const location = useRef()
     const manager = useRef()
     const fullTime = useRef()
-    // const hourlyRate = useRef()
+    const hourlyRate = useRef()
 
     const constructNewEmployee = () => {
 
@@ -19,7 +19,7 @@ export default props => {
             locationId: parseInt(location.current.value),
             manager: (manager.current.value === "1" ? true : false),
             fullTime: (fullTime.current.value === "0" ? true : false),
-            // hourlyRate: hourlyRate.current.value
+            hourlyRate: parseInt(hourlyRate.current.value)
         }
         console.log(newEmployeeObject)
         addEmployee(newEmployeeObject).then(props.toggle)
@@ -82,7 +82,7 @@ export default props => {
 
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="fullTime">Is this a full-time employee?</label>
+                    <label htmlFor="fullTime">Is this a full-time employee? </label>
                     <select
                         defaultValue=""
                         name="fullTime"
@@ -94,6 +94,22 @@ export default props => {
                         <option value="1">Yes</option>
     
                     </select>                 
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="hourlyRate">Hourly rate: </label>
+                    <input
+                        type="number"
+                        name="hourlyRate"
+                        ref={hourlyRate}
+                        id="hourlyRate"
+                        className="form-control"
+                    >
+                        
+    
+                    </input>                 
                 </div>
             </fieldset>
 
