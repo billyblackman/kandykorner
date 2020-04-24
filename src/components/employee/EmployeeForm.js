@@ -21,7 +21,7 @@ export default props => {
             fullTime: (fullTime.current.value === "0" ? true : false),
             hourlyRate: parseInt(hourlyRate.current.value)
         }
-        console.log(newEmployeeObject)
+        
         addEmployee(newEmployeeObject).then(props.toggle)
     }
 
@@ -50,13 +50,14 @@ export default props => {
                         defaultValue=""
                         name="location"
                         ref={location}
+                        required
                         id="employeeLocation"
                         className="form-control"
                     >
                         <option value="0">Select a location</option>
-                        {locations.map(e => (
-                            <option key={e.id} value={e.id}>
-                                {e.name}
+                        {locations.map(location => (
+                            <option key={location.id} value={location.id}>
+                                {location.address}
                             </option>
                         ))}
                     </select>
@@ -104,6 +105,7 @@ export default props => {
                         type="number"
                         name="hourlyRate"
                         ref={hourlyRate}
+                        required
                         id="hourlyRate"
                         className="form-control"
                     >
