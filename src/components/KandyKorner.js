@@ -7,6 +7,7 @@ import ProductList from "./product/ProductList"
 import { ProductTypeProvider } from "./productType/ProductTypeProvider"
 import EmployeeForm from "./employee/EmployeeForm"
 import { EmployeeProvider } from "./employee/EmployeeProvider"
+import EmployeeList from "./employee/EmployeeList"
 
 
 
@@ -30,10 +31,10 @@ export default () => {
         </ProductProvider>
     
 
-        <LocationProvider>
-            <EmployeeProvider>
+        <EmployeeProvider>
+            <LocationProvider>
                 <LocationList />
-
+                <EmployeeList />
                 <Button onClick={toggle}>Record an Employee</Button>
                 <Modal isOpen={modal} toggle={toggle}>
                     <ModalHeader toggle={toggle}>
@@ -44,8 +45,8 @@ export default () => {
                     </ModalBody>
                 </Modal>
 
-            </EmployeeProvider>
-        </LocationProvider>
+            </LocationProvider>
+        </EmployeeProvider>
         
 
     </>

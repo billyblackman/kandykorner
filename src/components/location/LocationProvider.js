@@ -43,9 +43,12 @@ export const LocationContext = React.createContext()
         }, [locations])
 
         return (
-            <LocationContext.Provider value={{
-                locations, addLocation
-            }}>
+            <LocationContext.Provider value={
+                {
+                locations,
+                addLocation
+                }
+            }>
                 {props.children}
             </LocationContext.Provider>
         )

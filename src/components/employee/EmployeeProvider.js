@@ -20,7 +20,7 @@ export const EmployeeContext = React.createContext()
         }
 
         const addEmployee = employee => {
-            return fetch("http://localhost:9000/Employees", {
+            return fetch("http://localhost:9000/employees", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

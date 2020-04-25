@@ -17,11 +17,13 @@ export default () => {
                     
                         const matchingProductType = productTypes.find(pt => pt.id === product.productTypeId)
                        
-                        return <Product key={product.id} product={product} 
-                                productType={matchingProductType}/>
+                        return <Product key={product.id} 
+                                        product={product} 
+                                        productType={matchingProductType}/>
                     })
                 }
             </div>
         </>
     )
 }
+

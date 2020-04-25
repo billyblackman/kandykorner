@@ -1,4 +1,5 @@
 import React, { useContext, useRef } from "react"
+import "./Employee.css"
 import { LocationContext } from "../location/LocationProvider"
 import { EmployeeContext } from "./EmployeeProvider"
 
@@ -23,12 +24,14 @@ export default props => {
         }
         
         addEmployee(newEmployeeObject).then(props.toggle)
+
+        
     }
 
     return (
         <form className="employeeForm">
 
-            <fieldset>
+            
                 <div className="form-group">
                     <label htmlFor="employeeName">Name of Employee: </label>
                     <input
@@ -41,9 +44,9 @@ export default props => {
                         placeholder="employee name"
                     />
                 </div>
-            </fieldset>
+            
 
-            <fieldset>
+            
                 <div className="form-group">
                     <label htmlFor="location">Assign to location: </label>
                     <select
@@ -62,11 +65,11 @@ export default props => {
                         ))}
                     </select>
                 </div>
-            </fieldset>
+            
 
-            <fieldset>
+            
                 <div className="form-group">
-                    <label htmlFor="manager">Is this employee a manager?</label>
+                    <label htmlFor="manager">Is this employee a manager? </label>
                     <select
                         defaultValue=""
                         name="manager"
@@ -79,9 +82,9 @@ export default props => {
     
                     </select>                 
                 </div>
-            </fieldset>
+            
 
-            <fieldset>
+            
                 <div className="form-group">
                     <label htmlFor="fullTime">Is this a full-time employee? </label>
                     <select
@@ -96,9 +99,9 @@ export default props => {
     
                     </select>                 
                 </div>
-            </fieldset>
+            
 
-            <fieldset>
+            
                 <div className="form-group">
                     <label htmlFor="hourlyRate">Hourly rate: </label>
                     <input
@@ -113,14 +116,21 @@ export default props => {
     
                     </input>                 
                 </div>
-            </fieldset>
+            
 
             <button type="submit"
                 onClick={
                     evt => {
-                        evt.preventDefault() // Prevent browser from submitting the form
+
+                        // Prevent browser from submitting the form
+
+                        evt.preventDefault() 
+                        
                         // create employee function goes here
-                        constructNewEmployee()
+                        
+                        if (name !== "" && location !== 0 && hourlyRate !== null) {
+                            constructNewEmployee()
+                        } else window.alert("Please complete all fields")
                     }
                 }
                 className="btn btn-primary">
